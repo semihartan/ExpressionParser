@@ -1,0 +1,38 @@
+Tokenizer toknzr;
+	memset(&toknzr, 0, sizeof(toknzr));
+	InitializeTokenizer(&toknzr, "50 + 4 * 2/ 4 - 9 + 3 * 6 * myfunc(5+6)");
+	do
+	{
+		switch (toknzr.token)
+		{	
+			case TAdd:
+				printf("Token is Add\n");
+				break;
+			case TSubtract:
+				printf("Token is Subtract\n");
+				break;
+			case TMultiply:
+				printf("Token is Multiply\n");
+				break;
+			case TDivide:
+				printf("Token is Divide\n");
+				break;
+			case TOpenParens:
+				printf("Token is Open Parenthesis\n");
+				break;
+			case TCloseParens:
+				printf("Token is Close Parenthesis\n");
+				break;
+			case TIdentifier:
+				printf("Token is Identifier : %s\n",toknzr.identifier);
+				break;
+			case TComma:
+				printf("Token is Comma\n");
+				break;
+			case TNumber:
+				printf("Token is a Number, Number = %lf\n", toknzr.number);
+				break;
+		}
+		NextToken(&toknzr);
+	} 
+	while (toknzr.token != EOT);
